@@ -1,0 +1,8 @@
+<p class="reservation-avaliable__header mb-3">Availability on {{date}} around {{hour}} for {{persons}} people:</p>
+<p><span class="reservation-avaliable__reservations__today mr-3">{{tablesLeft.numberOfFreeTables}} tables left</span><span class="reservation-avaliable__reservations__today">{{reservationsNumber}} reservations today</span></p>
+<h6>Select the best time that fits you:</h6>
+<div class="mt-3">
+  {{#each reservationTime as |reservationTime|}}
+    <button {{action 'reservation' reservationTime}} class="reservation__button btn"> {{reservationTime}}</button>
+  {{/each}}
+</div>

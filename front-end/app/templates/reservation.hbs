@@ -1,0 +1,202 @@
+<div id="reservation"></div>
+<div class="reservation__header" style="{{reservationHeaderBackground}}">
+  <div class="container">
+    <nav class="background__menu navbar navbar-expand-lg">
+      <a class="navbar-brand ml-3" href="/">Restaurant ABH</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="background__menu__items navbar-nav ml-auto">
+          <a class="nav-item nav-link active mr-5" href="/">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-item nav-link mr-5" href="/restaurants">Restaurants</a>
+          {{login-buttons loggedIn=loggedIn user=user logOut="logout"}}
+        </div>
+      </div>
+    </nav>
+  </div>
+</div>
+
+
+
+
+<div class="reservation__review__modal modal fade" id="reviewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <h3 class="col-12 text-center">Rate this place</h3>
+        <div class="reviewModal__stars mt-5 text-center">
+          {{star-rating
+            onClick=(action 'starRatingClicked')
+            numStars=5
+            baseColor="rgba(-2147483648,-2147483648,18,0.40)"
+            fillColor="#FD6F60"
+            width=24
+            height=24
+            rating=starRating
+            wholeOnly=true
+          }}
+        </div>
+        <div class="form-group mt-4">
+          {{textarea value=reviewDescription class="form-control" rows="4"}}
+        </div>
+        <div class="reviewModal__button">
+          <button {{action 'saveReview'}} class="reviewModal__button col-12 btn">Rate this place</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="reservation__restaurant">
+    <div class="row">
+      <div class="reservation_photo">
+        <img src="{{restaurant.imageFileName}}">
+      </div>
+      <div class="row">
+        <h3 class="ml-3 col-12 reservation__restaurant__name">{{restaurant.restaurantName}}</h3>
+        <div class="ml-3 col-12 reservation__restaurant__information">
+          <div class="form-inline">
+            <div class="reservation__restaurant__information__stars mr-3">
+              {{star-rating
+                numStars=5
+                readOnly=true
+                baseColor="grey"
+                fillColor="#FD6F60"
+                width=16
+                height=16
+                rating=restaurant.mark
+              }}
+            </div>
+            <div class="reservation__restaurant__information__number__ratings mr-3">
+              ({{restaurant.votes}})
+            </div>
+            <div class="reservation__restaurant__information__price mr-3">
+              <span class="reservation__restaurant__information__price__active">{{fa-icon "usd"}}</span>
+              <span class="{{if (gt restaurant.priceRange 1) 'reservation__restaurant__information__price__active'}}">{{fa-icon "usd"}}</span>
+              <span class="{{if (gt restaurant.priceRange 2) 'reservation__restaurant__information__price__active'}}">{{fa-icon "usd"}}</span>
+              <span class="{{if (gt restaurant.priceRange 3) 'reservation__restaurant__information__price__active'}}">{{fa-icon "usd"}}</span>
+            </div>
+            <div class="reservation__restaurant__information__cousine mr-3">
+              {{cousines}}
+            </div>
+            {{#if loggedIn}}
+              <div class="reservation__restaurant__information__review">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#reviewModal">
+                  <span class="reservation__restaurant__information__review__star"> {{fa-icon "star"}}</span> Rate this place
+                </button>
+              </div>
+            {{/if}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="reservation__container pt-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-2">
+        <ul class="reservation__container__side__menu">
+          <li><a href="#reservation">Reservation</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#photos">Photos</a></li>
+        </ul>
+      </div>
+      <div class="col-9 ml-5">
+        <div class="reservation__container__search-bar">
+          <div class="reservation__container__search__header">
+            <h5>Make a free reservation</h5>
+            <h6>Booked {{restaurant.booked}} times</h6>
+          </div>
+          <div class="reservation__container__search-bar__buttons">
+            {{search-bar findTable='findTable'}}
+          </div>
+          {{#if showErrorReservation}}
+            <h6>There are no free reservations</h6>
+          {{/if}}
+
+          {{#if reservationFound}}
+            {{reservation-avaliable
+              tablesLeft=tablesLeft
+              reservationsNumber=reservationsNumber
+              reservationTime=reservationTimesAvaliable
+              restaurantId=restaurant.id
+              restaurantName=restaurant.restaurantName
+              imageFileName=restaurant.imageFileName
+              date=date
+              hours=hours
+              persons=persons
+              reservation='reservation'
+            }}
+          {{/if}}
+        </div>
+        <div id="about"></div>
+        <div class="reservation__container__restaurant__information">
+          <h4>About {{restaurant.restaurantName}}</h4>
+          {{g-maps name="my-map" lat=restaurant.latitude lng=restaurant.longitude zoom=16 showZoomControl=false showScaleControl=false showMapTypeControl=false markers=markers}}
+
+          <h6>Description:</h6>
+          <p>{{restaurant.description}}</p>
+        </div>
+        <div id="menu"></div>
+        <div class="reservation__container__menu">
+          <div class="reservation__container__menu__header form-inline">
+            <h5>Menu:</h5>
+            <button {{action 'getMenu' 'Breakfast'}} class="{{if (eq menuType 1)
+              'reservation__container__menu__header__active'}} btn">Breakfast</button>
+            <button {{action 'getMenu' 'Lunch'}} class="{{if (eq menuType 2)
+              'reservation__container__menu__header__active'}} btn">Lunch</button>
+            <button {{action 'getMenu' 'Dinner'}} class="{{if (eq menuType 3)
+              'reservation__container__menu__header__active'}} btn">Dinner</button>
+          </div>
+          {{food-menu menu=menu}}
+          {{#if (gt numberOfMenuItems 6)}}
+            {{transparent-menu}}
+          {{/if}}
+        </div>
+        <div id="photos"></div>
+        <div class="reservation__container__gallery">
+          <div class="reservation__container__gallery__header">
+            <h5>Restaurants Photo</h5>
+            {{#if (gt numberOfPhotos 0)}}
+              <h6><a {{action 'getAllPhotos'}} href="#">See All Photos ({{numberOfPhotos}})</a></h6>
+            {{/if}}
+          </div>
+          {{#if (gt numberOfPhotos 0)}}
+            {{#photo-swipe items=photos history=false as |photoswipe|}}
+              <div class="reservation__container__gallery__photos">
+                <div class="reservation__container__gallery__photos__first">
+                  <img src={{photos.[0].src}} {{action photoswipe.actions.open (hash index=index)}} />
+                </div>
+                <div class="reservation__container__gallery__photos__rest">
+                  {{#each photos as |photo index|}}
+                    {{#if (and (gt index 0) (lt index 7))}}
+                      <img src={{photo.src}} {{action photoswipe.actions.open (hash index=index)}} />
+                    {{/if}}
+                  {{/each}}
+                </div>
+                <div class="reservation__container__gallery__photos__seeAll">
+                  {{#each photos as |photo index|}}
+                    {{#if (gt index 6)}}
+                      <img src={{photo.src}} {{action photoswipe.actions.open (hash index=index)}} />
+                    {{/if}}
+                  {{/each}}
+                </div>
+              </div>
+            {{/photo-swipe}}
+          {{else}}
+            There are no photos
+          {{/if}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

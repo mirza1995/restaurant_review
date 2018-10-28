@@ -1,0 +1,35 @@
+/*Footer*/
+@import "../defaults/constants";
+
+.footer {
+  background-color: $menu-background-color;
+  min-height: 150px;
+  overflow: hidden;
+}
+.footer a {
+  text-decoration:none;
+  padding:50px 0 10px 40px;
+}
+.footer__column {
+  padding-left:260px;
+}
+.footer__column__links {
+  font-size: 50px;
+}
+.footer__column__links  a{
+  color: white;
+  font-size: 16px;
+}
+
+
+.footer__column__links--opacity {
+  @extend .footer__column__links;
+  opacity: 0.4;
+}
+
+.footer__column__copyright {
+  opacity: 0.4;
+  font-size: 14px;
+  color: white;
+  padding:10px 0 10px 55px;
+}

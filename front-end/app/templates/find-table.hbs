@@ -1,0 +1,46 @@
+<div class="container">
+  <nav class="menu navbar navbar-expand-lg">
+    <a class="navbar-brand ml-3" href="/">Restaurant ABH</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse">
+      <div class="menu__items navbar-nav ml-auto">
+        <a class="nav-item nav-link active mr-5" href="/">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-item nav-link mr-5" href="/restaurants">Restaurants</a>
+        {{login-buttons loggedIn=loggedIn user=user logOut="logout"}}
+      </div>
+    </div>
+  </nav>
+</div>
+<div class="find__table__main__body">
+  <div class="find__table__results container pb-5 pt-5">
+    <h3 class="mt-5 mb-3 text-center">Search Results:</h3>
+    <div class="find__table__results__restaurants">
+      {{#each restaurants as |restaurant|}}
+        <div class="find__table__results__restaurants__card">
+          {{find-table-restaurant 
+            restaurantName=restaurant.[0].restaurantName
+            imageFileName=restaurant.[0].imageFileName
+            date=reservationCriterium.date
+            hours=reservationCriterium.hours
+            persons=reservationCriterium.persons}}
+          <div class="find__table__results__restaurants__card__times">
+            {{reservation-avaliable 
+                reservationsNumber=restaurant.[2].reservationsToday
+                tablesLeft=restaurant.[1].[0]
+                reservationTime=restaurant.[1].[1]
+                restaurantId=restaurant.[0].id
+                restaurantName=restaurant.[0].restaurantName
+                imageFileName=restaurant.[0].imageFileName
+                date=reservationCriterium.date
+                hours=reservationCriterium.hours
+                persons=reservationCriterium.persons
+                reservation='reservation'}}
+          </div>
+        </div>
+      {{/each}}
+    </div>
+  </div>
+</div>
+

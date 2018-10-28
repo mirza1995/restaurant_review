@@ -1,0 +1,32 @@
+<img class="restaurant-card-reservation__image card-img-top" src="{{restaurant.imageFileName}}" alt="restaurant photo">
+<div class="card-body">
+  <h5 class="card-title">{{restaurant.restaurantName}}</h5>
+  <div class="row">
+    <div class="restaurant-card-reservation__stars col-md-12 col-lg-5 mt-1">
+      {{star-rating
+        numStars=5
+        readOnly=true
+        baseColor="rgba(-2147483648,-2147483648,18,0.40)"
+        fillColor="#FD6F60"
+        width=16
+        height=16
+        rating=restaurant.mark
+      }}
+    </div>
+    <div class="restaurant-card-reservation__reviews col-md-6 col-lg-3">({{restaurant.votes}})</div>
+    <div class="restaurant-card-reservation__price row col-md-6 col-lg-3">
+      <div class="restaurant-card-reservation__price__active">{{fa-icon "usd"}}</div>
+      <div class="{{if (gt restaurant.priceRange 1) 'restaurant-card-reservation__price__active'}}">{{fa-icon "usd"}}</div>
+      <div class="{{if (gt restaurant.priceRange 2) 'restaurant-card-reservation__price__active'}}">{{fa-icon "usd"}}</div>
+      <div class="{{if (gt restaurant.priceRange 3) 'restaurant-card-reservation__price__active'}}">{{fa-icon "usd"}}</div>
+    </div>  
+  </div>
+</div>
+<div class="restaurant-card-reservation__cousine">
+  {{cousines}}
+</div>
+<div class="restaurant-card-reservation__reserve mt-3">
+  <a href="/reservation/{{restaurant.id}}" class="btn col-12">Reserve Now</a>
+</div>
+
+

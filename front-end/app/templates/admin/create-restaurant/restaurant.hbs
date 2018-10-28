@@ -1,0 +1,97 @@
+{{#if restaurantCreated}}
+  <div class="alert alert-success text-center" role="alert">
+    Restaurant created.
+  </div>
+{{/if}}
+{{#if restaurantUpdated}}
+  <div class="alert alert-success text-center" role="alert">
+    Restaurant updated.
+  </div>
+{{/if}}
+<div class="form-inline pl-0">
+  <div class="col-sm-12 col-lg-6 pl-0">
+    <h5>Add Logo</h5>
+    <div class="create-restaurant__body__logo">
+      {{file-upload fileInputChanged='logoUpload' 
+        text='Upload Logo'
+        previewPhoto=logoPhoto}}
+    </div>
+  </div>
+  <div class="col-sm-12 col-lg-6 pl-0">
+    <h5>Add Cover Photo</h5>
+    <div class="create-restaurant__body__cover">
+      {{file-upload fileInputChanged='coverUpload' text='Upload Cover Photo' previewPhoto=coverPhoto}}
+    </div>
+  </div>
+</div>
+
+<div class="form-inline pl-0">
+  <div class="col-sm-12 col-lg-6 pl-0">
+    <div class="create-restaurant__body__input form-group">
+      <label>Name</label>
+      {{input type="text" class="col-12 form-control" value=restaurantName placeholder="Restaurant Name" aria-describedby="restaurantName"}}
+    </div>
+  </div>
+  <div class="col-sm-12 col-lg-6 d-flex justify-content-between pl-0">
+    <div class="create-restaurant__body__input__price form-group">
+      <label>Price Range</label>
+      <select onchange={{action 'onPriceRangeSelect' value="target.value"}} class="col-12 form-control">
+        {{#each (range 1 5) as |index|}}
+          <option value="{{index}}" selected="{{if (eq (get-array-value tablesSize index) (get-array-value tablesSize priceRangeSelected)) 'true'}}">{{index}}</option>
+        {{/each}}
+      </select>
+    </div>
+    <div class="create-restaurant__body__input__location form-group">
+      <label>Location</label>
+      <select onchange={{action 'onLocationSelect' value="target.value"}} class="col-12 form-control">
+        {{#each locations as |location|}}
+          <option value="{{location.locationName}}" selected="{{if (eq locationSelected location.locationName) 'true'}}">{{location.locationName}}</option>
+        {{/each}}
+      </select>
+    </div>
+  </div>
+</div>
+
+<div class="row pl-0 pr-0 mr-0 ml-0">
+  <div class="col-sm-12 col-lg-6 pl-0">
+    <h5>Description</h5>
+    <div class="create-restaurant__body__description">
+      {{textarea value=restaurantDescription class="create-restaurant__body__description__textarea form-control"}}
+    </div>
+  </div>
+  <div class="col-sm-12 col-lg-6 pl-0">
+    <div class="create-restaurant__body__input__cousine form-group">
+      <label>Cousines</label>
+      <select onchange={{action 'onCousineSelect'}} class="col-12 mt-1 form-control" multiple>
+        {{#each cousines as |cousine|}}
+          <option value="{{cousine.name}}" selected={{include selectedCousines cousine.name}}>{{cousine.name}}</option>
+        {{/each}}
+      </select>
+    </div>
+  </div>
+</div>
+
+<h5>Location</h5>
+{{#g-map lat=locationLatitude lng=locationLongitude zoom=13 onClick=(action 'onMapClick') as |g|}}
+  {{#if mapClicked}}
+    {{g.marker
+      lat=latitude
+      lng=longitude}}
+  {{/if}}
+{{/g-map}}
+<div class="create-restaurant__body__errors">
+  {{#if basicDetailsError}}
+    <div class="alert alert-danger" role="alert">
+      Errors on the page: <br>
+      {{#each basicDetailsErrorMessages as |message|}}
+        <div class="ml-3">{{message}}<br></div>
+      {{/each}}
+    </div>
+  {{/if}}
+</div>
+
+<div class="create-restaurant__body__buttons col-12 text-right pt-4">
+  <button {{action "cancel"}} class="cancel__button btn">Cancel</button>
+  <button {{action "addRestaurant"}} class="create__button btn">{{#if updateRestaurant}}Update{{else}}Add{{/if}} Restaurant</button>
+</div>
+

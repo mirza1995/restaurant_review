@@ -1,0 +1,46 @@
+.popular__card {
+  border:none;
+}
+.restaurant-card-reservation__image {
+  width:100%;
+  height:200px;
+}
+
+.restaurant-card-reservation__reviews {
+  font-size: 18px;
+  opacity: 0.4;
+}
+
+.restaurant-card-reservation__stars {
+    line-height:18px;
+    font-size:16px;
+    color: $light-grey-color;
+}
+
+.restaurant-card-reservation__price {
+  font-size: 12px;
+  margin-top: 2.5px;
+  letter-spacing: 2.25px;
+  line-height: 20px;
+  color:$light-grey-color;
+}
+.restaurant-card-reservation__price__active {
+  color: $menu-background-color;
+}
+
+.restaurant-card-reservation__cousine {
+  opacity: 0.4;
+  border-top: 2px solid $border-grey-color;
+  font-size: 16px;
+  color: $menu-background-color;
+}
+
+.restaurant-card-reservation__reserve {
+  background: #F9F9F9;
+  border: 1px solid $border-grey-color;
+  border-radius: 2px;
+}
+.restaurant-card-reservation__reserve a{
+  font-size: 18px;
+  color: $menu-background-color;
+}

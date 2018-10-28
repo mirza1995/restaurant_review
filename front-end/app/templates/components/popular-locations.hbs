@@ -1,0 +1,9 @@
+<h2 class="text-center">Popular Locations</h2>
+<div class="row mt-5">
+  {{#each popularLocations as |popularLocation|}}
+    <div class="col-sm-12 col-md-4 col-lg-3">
+      <h3 class="popular-locations__title text-center">{{popularLocation.locationName}}</h3>
+      <p class="popular-locations__number text-center">({{popularLocation.numberOfRestaurants}})</p>
+    </div>
+  {{/each}}
+</div>

@@ -1,0 +1,28 @@
+.find-table-restaurant__card {
+  background: white;
+  padding:40px 60px;
+}
+.find-table-restaurant__card__image img{
+  width:160px;
+  height:160px;
+}
+.find-table-restaurant__card__information h6 {
+  text-transform:uppercase;
+  color:$grey-letter-color;
+  font-size:15px;
+}
+.find-table-restaurant__card__information h5 {
+  color:$findTable-button-color;
+  font-size:22px;
+  margin-bottom:55px;
+}
+.find-table-restaurant__card__information__header h6 {
+  width:140px;
+  text-transform:uppercase;
+  color:$grey-letter-color;
+  font-size:15px;
+}
+.find-table-restaurant__card__information__reservation h5 {
+  width:140px;
+  color:$menu-background-color;
+}

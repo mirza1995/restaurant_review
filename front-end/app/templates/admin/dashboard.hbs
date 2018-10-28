@@ -1,0 +1,27 @@
+<div class="admin__menu d-flex justify-content-between">
+  <div class="admin__menu__links">
+    <a class="admin__menu__links--active" href="#">Dashboard</a>
+    <a href="restaurants">Restaurants</a>
+    <a href="locations">Locations</a>
+    <a href="cousines">Categories</a>
+    <a href="users">Users</a>
+  </div>
+</div>
+
+<div class="admin__container__information form-inline">
+  <div class="admin__container__information__box text-center">
+    <h3>{{numberOfRestaurants}}</h3>
+    <p>Restaurants</p>
+    <a href="/admin/createRestaurant/0" class="admin__container__information__box__button btn">Add Restaurant</a>
+  </div>
+  <div class="admin__container__information__box text-center">
+    <h3>{{numberOfLocations}}</h3>
+    <p>Locations</p>
+    <a href="/admin/createLocation/0" class="admin__container__information__box__button btn">Add Location</a>
+  </div>
+  <div class="admin__container__information__box--third text-center">
+    <h3>{{numberOfUsers}}</h3>
+    <p>Users</p>
+    <a href="/admin/createUser/0" class="admin__container__information__box__button btn">Add New User</a>
+  </div>
+</div>

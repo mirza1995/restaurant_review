@@ -1,0 +1,52 @@
+<div class="admin__header form-inline">
+  <div class="admin__menu col d-flex mr-lg-5 mr-md-5 justify-content-between">
+    <div class="admin__menu__links">
+      <a href="/admin/dashboard">Dashboard</a>
+      <a href="/admin/restaurants">Restaurants</a>
+      <a class="admin__menu__links--active" href="/admin/locations">Locations</a>
+      <a href="/admin/cousines">Categories</a>
+      <a href="/admin/users">Users</a>
+    </div>
+  </div>
+
+  <button {{action "changeLocation" 0}} class="admin__header__button col-auto btn">Add Location</button>
+</div>
+<div class="create__body">
+  <div class="create__container">
+    <div class="col-sm-12 col-lg-6 pl-0 pr-4">
+      {{#if showBackEndValidationError}}
+        {{ error-message message="There was an error in the information you entered"}}
+      {{/if}}
+      {{#if showLocationError}}
+        {{ error-message message="Location name is missing"}}
+      {{/if}}
+    </div>
+    <div class="form-inline pl-0 col-12">
+      <div class="col-sm-12 col-lg-6 pl-0 form-group">
+          <label class="mb-1">Location Name</label>
+          {{input type="text" class="col-12 form-control" value=locationName placeholder="Location Name" aria-describedby="locationName" key-up="locationNameChanged"}}
+      </div>
+    </div>
+    <div class="form-inline pl-0 col-12 mt-5">
+      <h6>Draw a rectangle on map by clicking locations.</h6>
+      <h6 class="create-location__headline ml-3"><button href="#" {{action "deleteRectangle"}}>Delete Rectangle</button></h6>
+    </div>
+    <div class="create-location__map form-inline pl-0 col-12 mt-3">
+      {{#g-map lat=locationLatitude lng=locationLongitude zoom=11 onClick=(action 'onMapClick') as |g|}}
+        {{#if polygonUpdated}}
+          {{g.polyline path=arrayOfCoordinates
+          geodesic=true
+          strokeColor="orange"
+          strokeOpacity=1.0
+          strokeWeight=3}}
+        {{/if}}
+      {{/g-map}}
+    </div>
+    <div class="form-inline pl-0 col-12">
+      <div class="col-12 pr-0 text-right pt-4">
+        <button {{action "cancel"}} class="cancel__button btn">Cancel</button>
+        <button {{action "addLocation"}} class="create__button btn">{{#if updateLocation}}Update{{else}}Add{{/if}} Location</button>
+      </div>
+    </div>
+  </div>
+</div>

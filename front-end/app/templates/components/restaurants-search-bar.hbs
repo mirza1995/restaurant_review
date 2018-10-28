@@ -1,0 +1,82 @@
+<div class="restaurants-search-bar__location">
+  <label class="sr-only">Search for a restaurant</label>
+  <div class="input-group">
+    <div class=" input-group-prepend">
+      <div class="restaurants-search-bar__location__icon input-group-text">{{fa-icon "search"}}</div>
+    </div>
+    {{input value=restaurantName 
+      type="text" 
+      class="restaurants-search-bar__location__input form-control"  
+      placeholder="Search for a restaurant..."}}
+  </div>
+</div>
+
+<div class="restaurants-search-bar__filter  btn-group">
+  <button class="restaurants-search-bar__filter__button btn" type="button">Filter by</button>
+  <button {{action "toggleFilter"}} type="button" class="popup btn dropdown-toggle dropdown-toggle-split" aria-haspopup="true" aria-expanded="false">
+  </button>
+  {{#if showFilter}}
+    <div class="popup">
+      <div class="popup-text">
+        <div class="row">
+          <div class="restaurants-search-bar__popup-text__header col-6">
+            PRICE
+          </div>
+          <div class="restaurants-search-bar__popup-text__header col-6">
+            RATING
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="restaurants-search-bar__popup-text__rating col-6">
+            <span class="{{if (gt priceRating 0) 'restaurants-search-bar__popup-text__rating__dollar--active'}}">
+              {{restaurant-search-bar-dollar value=1 currentRating=priceRating updatePriceRating='updatePriceRating'}}
+            </span>
+            <span class="{{if (gt priceRating 1) 'restaurants-search-bar__popup-text__rating__dollar--active'}}">
+              {{restaurant-search-bar-dollar value=2 updatePriceRating='updatePriceRating'}}
+            </span>
+            <span class="{{if (gt priceRating 2) 'restaurants-search-bar__popup-text__rating__dollar--active'}}">
+              {{restaurant-search-bar-dollar value=3 updatePriceRating='updatePriceRating'}}
+            </span>
+            <span class="{{if (gt priceRating 3) 'restaurants-search-bar__popup-text__rating__dollar--active'}}">
+              {{restaurant-search-bar-dollar value=4 updatePriceRating='updatePriceRating'}}
+            </span>
+          </div>
+          <div class="restaurants-search-bar__popup-text__rating col-6">
+            {{star-rating
+              onClick=(action 'starRatingClicked')
+              numStars=5
+              baseColor="rgba(-2147483648,-2147483648,18,0.40)"
+              fillColor="#FD6F60"
+              width=16
+              height=16
+              rating=starRating
+              wholeOnly=true
+            }}
+          </div>
+        </div>
+        <div class="row">
+          <div class="restaurants-search-bar__popup-text__line col-11"></div>
+        </div>
+        <div class="row">
+          <div class="restaurants-search-bar__popup-text__header col-6">
+            COUSINE
+          </div>
+        </div>
+        <div class="row">
+
+          {{#each cousines as |cousine|}}
+            <div class="restaurants-search-bar__popup-text__cousine col-6">
+              {{cousine-item  
+                cousineName=cousine.name
+                activeCousine=activeCousine
+                changeCousineToSearch='changeCousineToSearchComponent'}}
+            </div>
+          {{/each}}
+        </div>
+      </div>
+    </div>
+  {{/if}}
+</div>
+
+<button {{action 'searchClicked'}} class="restaurants-search-bar__button btn" type="submit">Search</button>

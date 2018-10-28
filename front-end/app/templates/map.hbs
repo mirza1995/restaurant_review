@@ -1,0 +1,65 @@
+<div class="container">
+  <nav class="menu navbar navbar-expand-lg">
+    <a class="navbar-brand ml-3" href="/">Restaurant ABH</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse">
+      <div class="menu__items navbar-nav ml-auto">
+        <a class="nav-item nav-link active mr-5" href="/">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-item nav-link mr-5" href="/restaurants">Restaurants</a>
+        <a class="login__menu__items--active nav-item nav-link mr-5 ml-3" href="/login">Login</a>
+      </div>
+    </div>
+  </nav>
+</div>
+<div class="map form-inline pl-0 col-12 mt-3">
+  {{#g-map lat=location.lat  lng=location.lng zoom=12 styles=mapStyle as |g|}}
+    {{#if userLocationFound}}
+      {{g.infoWindow lat=location.lat lng=location.lng
+        isOpen=mapTooltipOpen
+        content="You are here"}}
+    {{/if}}
+    {{#each restaurants as |restaurant|}} 
+      {{#g.marker lat=restaurant.latitude lng=restaurant.longitude
+        onClick=(action "changeTip" restaurant.id) as |m|}}
+        {{#m.infoWindow isOpen=(eq markerTooltipOpen restaurant.id) as |i|}}
+          <div class="map__marker text-center">
+            <img src="{{restaurant.imageFileName}}">
+            <div class="text-left">
+            <h5 class="mt-2">{{restaurant.restaurantName}}</h5>
+            <div class="form-inline">
+              {{star-rating
+                numStars=5
+                readOnly=true
+                baseColor="rgba(-2147483648,-2147483648,18,0.40)"
+                fillColor="#FD6F60"
+                width=16
+                height=16
+                rating=restaurant.mark
+              }}
+              <span class="ml-3">( {{restaurant.votes}} )</span>
+            </div>
+            <div class="restaurant-card-reservation__price">
+              <span class="restaurant-card-reservation__price__active">{{fa-icon "usd"}}</span>
+              <span class="{{if (gt restaurant.priceRange 1) 'restaurant-card-reservation__price__active'}}">{{fa-icon "usd"}}</span>
+              <span class="{{if (gt restaurant.priceRange 2) 'restaurant-card-reservation__price__active'}}">{{fa-icon "usd"}}</span>
+              <span class="{{if (gt restaurant.priceRange 3) 'restaurant-card-reservation__price__active'}}">{{fa-icon "usd"}}</span>
+            </div>
+            <h6 class="mt-2">Cuisines:</h6>
+            <div class="map__cousines">
+              {{#each restaurant.cousines as |cousine|}}
+                <h6>{{cousine.name}}</h6>
+              {{/each}}
+            </div>
+            
+          </div>
+        </div>
+          <div class="restaurant-card-reservation__reserve mt-3">
+            <a href="/reservation/{{restaurant.id}}" class="btn col-12">Reserve Now</a>
+          </div>
+        {{/m.infoWindow}}
+      {{/g.marker}}
+    {{/each}}
+  {{/g-map}}
+</div>

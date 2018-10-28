@@ -1,0 +1,33 @@
+{{#each mealTypes as |mealType|}}
+  <h5 class="food-menu__type">{{mealType}}</h5>
+  {{log }}
+  {{#if (get-array-value smallPriceExists mealType) }}
+    <div class="food-menu__header">
+      <div class="food-menu__header__empty"></div>
+      <div class="food-menu__header__size">
+        <p>small</p>
+        <p>large</p>
+      </div>
+    </div>
+  {{/if}}
+  <div class="food-menu__meals">
+    {{#each menu as |menuItem|}}
+      {{#if (eq menuItem.mealType mealType)}}
+        <div class="food-menu__list__row">
+          <h6 class="food-menu__list__row__dish">{{menuItem.name}}</h6>
+          <div class="food-menu__list__row__dots"></div>
+          <div class="food-menu__list__row__prices">
+            {{#if (get-array-value smallPriceExists mealType) }}
+              <h6 class="food-menu__list__row__prices__small">${{menuItem.smallPrice}}</h6>
+            {{/if}}
+            <div class="food-menu__list__row__dots"></div>
+            <h6 class="food-menu__list__row__prices__large">${{menuItem.largePrice}}</h6>
+          </div>
+        </div>
+        <div class="food-menu__list__additions">
+          {{menuItem.description}}
+        </div>
+      {{/if}}
+    {{/each}}
+  </div>
+{{/each}}

@@ -1,0 +1,11 @@
+<select onchange={{action 'onSelect' value="target.value"}} class="col-12 form-control">
+  {{#if tablesDropdown}}
+    <option value="0">Select type of table</option>
+    {{#each (range 0 10) as |index|}}
+      <option value="{{add index 1}}" selected="{{if (eq selectedValue (get-array-value tablesSize index)) 'true'}}">Table for {{get-array-value tablesSize index}} person{{#if (gt index 0)}}s{{/if}}</option>
+    {{/each}}
+  {{else}}
+    <option value="square" selected="{{if (eq selectedValue 'square') 'true'}}">Square</option>
+    <option value="round" selected="{{if (eq selectedValue 'round') 'true'}}">Round</option>
+  {{/if}}
+</select>

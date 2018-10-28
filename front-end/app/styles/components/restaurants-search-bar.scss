@@ -1,0 +1,75 @@
+.restaurants__container__search {
+  min-height:56px;
+  margin:0 auto;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+.restaurants-search-bar__location {
+  width:350px;
+  min-width:200px;
+  height:56px;
+  flex-grow:1;
+}
+.restaurants-search-bar__location__icon {
+  background-color:white;
+  border:none;
+}
+.restaurants-search-bar__location__input {
+  height:56px;
+  border-radius:0;
+  border:none;
+}
+.restaurants-search-bar__filter button {
+  height:56px;
+  border-radius:0;
+  background-color:white;
+}
+.restaurants-search-bar__filter__button {
+  width:100px;
+}
+.restaurants-search-bar__button {
+  height:56px;
+  border-radius: 0 3px 3px 0;
+  background-color:$findTable-button-color;
+  color:white;
+  width:138px;
+}
+
+/*Popup style*/
+
+.restaurants-search-bar__popup-text__header{
+  padding-left:30px;
+  font-size: 14px;
+  color: $grey-letter-color;
+  letter-spacing: 0;
+}
+.restaurants-search-bar__popup-text__rating {
+  padding-left:30px;
+  margin-top:10px;
+  font-size: 18px;
+}
+.restaurants-search-bar__dollar {
+  color: $light-grey-color;
+  letter-spacing: 2px;
+  line-height: 21px;
+}
+.restaurants-search-bar__popup-text__rating__dollar--active span{
+  color:$findTable-button-color;
+}
+.restaurants-search-bar__popup-text__line {
+  background: #E7EAEC;
+  height:1px;
+  margin:10px auto;
+}
+.restaurants-search-bar__popup-text__cousine {
+  padding-left:30px;
+  font-size: 14px;
+  color: $black-color;
+  line-height: 20px;
+  cursor:pointer;
+}
+
+.restaurants-search-bar__popup-text__cousine--picked,.restaurants-search-bar__dollar--picked{
+  color:$findTable-button-color;
+}

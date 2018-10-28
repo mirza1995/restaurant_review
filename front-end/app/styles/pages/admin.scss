@@ -1,0 +1,142 @@
+@import "admin/users";
+@import "admin/create-user";
+@import "admin/restaurants";
+.admin__container {
+  background-color: $grey-background-color;
+  min-height:600px;
+}
+
+.admin__container .container {
+  padding-top:26px;
+}
+.admin__menu {
+  min-height:46px;
+  background: white;
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,0.10);
+  border-radius: 2px;
+}
+.admin__menu__links {
+  padding: 12px 0 14px 24px;
+}
+.admin__menu__links a{
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 16px;
+  color: $light-grey-color-opacity40;
+  letter-spacing: -0.2px;
+  line-height: 18px;
+  text-decoration:none;
+  margin-right:36.5px;
+  font-weight:bold;
+}
+.admin__menu__links .admin__menu__links--active{
+  color: $findTable-button-color;
+}
+.admin__menu__search {
+  font-size: 16px;
+  color: rgba(30,30,30,0.40);
+  letter-spacing: 0;
+}
+.admin__menu__search .admin__menu__search__input {
+  border:none;
+  margin-left:6px;
+  width:120px;
+}
+.admin__container__information {
+  display:flex;
+}
+
+.admin__container__information__box {
+  padding: 60px 112px 80px 112px;
+}
+
+.admin__container__information__box {
+  margin:80px 20px 0 0;
+  color: $menu-background-color;
+  letter-spacing: 0;
+  background: white;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.10);
+  border-radius: 2px;
+  flex: 1 1 0;
+}
+.admin__container__information__box--third {
+  @extend .admin__container__information__box;
+  margin-right:0px;
+}
+.admin__container__information__box h3 {
+  font-size: 48px;
+  margin-bottom:0px;
+}
+
+.admin__container__information__box p {
+  font-size: 16px;
+}
+
+.admin__container__information__box__button {
+  background: $findTable-button-color;
+  border-radius: 2px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 16px;
+  color:white;
+  width:150px;
+  height:34px;
+  position:absolute;
+  margin-left:-75px;
+  margin-top:62px;
+  font-weight:bold;
+  text-decoration:none;
+}
+
+.admin__container__information__box__button:hover {
+  color:$create-white-color;
+}
+
+.cancel__button, .create__button {
+  font-size: 18px;
+  padding:12px 20px 12px 20px;
+}
+.cancel__button {
+  color:$menu-background-color;
+  margin-right:10px;
+  background: white;
+  border: 1px solid $create-white-color;
+  border-radius: 3px;
+}
+.create__button {
+  background: $findTable-button-color;
+  color:white;
+}
+
+.create-location__map .ember-google-map {
+  margin-left:5px;
+  width:100%;
+  height:500px;
+}
+.create-location__headline button {
+  color:$findTable-button-color;
+  background:none;
+  border:none;
+}
+
+.create-location__headline button:hover {
+  color:$menu-background-color;
+}
+@media only screen and (max-width: 768px) {
+    .admin__container__information__box {
+        margin-right:0px;
+    }
+    .admin__container__information__box--third {
+      margin-bottom:60px;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .admin__container__information__box {
+        margin-right:0px;
+    }
+    .admin__container__information__box:first-child {
+      margin-right:20px;
+    }
+    .admin__container__information__box--third {
+      margin-bottom:60px;
+    }
+}

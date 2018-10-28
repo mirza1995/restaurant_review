@@ -1,0 +1,15 @@
+<div class="landing-search-bar__location">
+  <label class="sr-only">Location, Restaurant or Cousine</label>
+  <div class="input-group">
+    <div class="input-group-prepend">
+      <div class="input-group-text">{{fa-icon "search"}}</div>
+    </div>
+    {{input type="text"
+      class="landing-search-bar__location__input form-control"  
+      placeholder="Location, Restaurant or Cousine"
+      value=searchName}}
+  </div>
+</div>
+{{search-bar findTable='findTable'}}
+
+

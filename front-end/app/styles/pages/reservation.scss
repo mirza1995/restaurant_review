@@ -1,0 +1,273 @@
+@import "../defaults/constants";
+@import "../components/food-menu";
+@import "../components/transparent-menu";
+@import "../components/reservation-avaliable";
+
+.background__menu__items .nav-item{
+  font-size: 16px;
+}
+.background__menu__items a, .background__menu a {
+  color:white;
+}
+.reservation__header {
+  min-height: 340px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: white;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+.reservation__restaurant{
+  position:absolute;
+  z-index:1;
+  margin-top:-150px;
+  color:white;
+}
+.reservation__restaurant__name {
+  opacity:0.6;
+  font-size:30px;
+  margin-top:60px;
+}
+.reservation__restaurant__information {
+  font-size: 16px;
+  color: #FFFFFF;
+  margin-top:-40px;
+}
+.reservation__restaurant__information__stars {
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 18px;
+}
+.reservation__restaurant__information__number__ratings {
+  opacity: 0.6;
+  font-size: 16px;
+  color: #FFFFFF;
+}
+.reservation__restaurant__information__price {
+  opacity:0.6;
+  font-size: 12px;
+  color: grey;
+  letter-spacing: 2.25px;
+  line-height: 20px;
+}
+.reservation__restaurant__information__price__active{
+  color: white;
+  opacity:1;
+}
+.reservation__restaurant__information__cousine {
+  opacity:0.6;
+}
+.reservation__restaurant__information__review{
+  margin-left:250px;
+}
+.reservation__restaurant__information__review button {
+  background-color:white;
+  color:$menu-background-color;
+  border:none;
+  height:50px;
+  margin-bottom:20px;
+  font-size:18px;
+  font-weight:bold;
+}
+
+.reservation__restaurant__information__review button:hover {
+  background-color:$grey-background-color;
+  color:black;
+}
+.reservation__restaurant__information__review__star {
+  color:$findTable-button-color;
+  margin-right:10px;
+}
+
+.modal-header {
+  border-bottom:none;
+  height:20px;
+}
+.reviewModal__button button {
+  //height:24px;
+  font-size:24px;
+  color:white;
+  background-color:$findTable-button-color;
+  margin-bottom:100px;
+}
+.reservation_photo {
+  border: 3px solid white;
+  border-radius:5px;
+}
+.reservation_photo img{
+  width: 210px;
+  height:182px;
+}
+
+.reservation__container {
+  min-height:400px;
+  background-color:$grey-background-color;
+}
+.reservation__container__side__menu {
+  list-style-type: none;
+}
+.reservation__container__side__menu li a {
+  text-decoration:none;
+  font-size: 18px;
+  color: rgba(-2147483648,-2147483648,18,0.30);
+  line-height: 21px;
+}
+.reservation__container__search-bar {
+  background: #FFFFFF;
+  box-shadow: 0 2px 7px 0 rgba(0,0,0,0.10);
+  border-radius: 2px;
+  padding:30px;
+}
+.reservation__container__search-bar h5 {
+  font-size: 20px;
+  color: $resturant-header-color;
+}
+.reservation__container__search-bar h6 {
+  font-size: 13px;
+  color: $menu-background-color;
+  letter-spacing: 0;
+}
+.reservation__container__search__header {
+  display:flex;
+  flex-wrap:wrap;
+  justify-content: space-between;
+}
+.reservation__container__search-bar__buttons{
+  border: 1px solid #E3E3E3;
+}
+.reservation__button {
+  background: $findTable-button-color;
+  border-radius: 2px;
+  color:white;
+  font-size: 16px;
+}
+.reservation__button {
+
+}
+
+.search-bar__dropdown{
+  flex-grow:1;
+}
+
+.reservation__container__restaurant__information {
+  background: #FFFFFF;
+  box-shadow: 0 2px 7px 0 rgba(0,0,0,0.10);
+  border-radius: 2px;
+  margin-top:30px;
+}
+
+.reservation__container__restaurant__information h4 {
+  font-size: 20px;
+  color: $resturant-header-color;
+  padding:30px 0 10px 30px;
+}
+.reservation__container__restaurant__information h6{
+  font-size: 18px;
+  color: $resturant-header-color;
+  padding:20px 0 0 30px;
+}
+.reservation__container__restaurant__information p{
+  font-size: 18px;
+  color: #1A1A1A;
+  letter-spacing: 0;
+  padding:17px 30px 44px 30px;
+  text-align: justify;
+}
+
+.reservation-avaliable__header {
+  font-size: 20px;
+  color:$menu-background-color;
+  font-weight:bold;
+}
+
+.reservation__container__menu {
+  background: #FFFFFF;
+  box-shadow: 0 2px 7px 0 rgba(0,0,0,0.10);
+  border-radius: 2px;
+  margin-top:30px;
+  width:100%;
+}
+.reservation__container__menu__header {
+  padding: 24px 0 24px 30px;
+  border-bottom: 2px solid rgba(216, 216, 216,0.4);
+}
+.reservation__container__menu__header h5 {
+  font-size: 20px;
+  color: $resturant-header-color;
+}
+.reservation__container__menu__header .btn {
+  width: 120px;
+  height: 34px;
+  font-size: 16px;
+  color: $findTable-button-color;
+  padding-top:2px;
+  background-color:white;
+  margin-left:10px;
+}
+
+.reservation__container__menu__header .reservation__container__menu__header__active {
+  color: white;
+  background: $findTable-button-color;
+  border-radius: 2px;
+}
+
+
+.reservation__container__gallery {
+  background: #FFFFFF;
+  box-shadow: 0 2px 7px 0 rgba(0,0,0,0.10);
+  border-radius: 2px;
+  margin-top:30px;
+  width:100%;
+  padding:30px;
+  margin-bottom:30px;
+}
+.reservation__container__gallery__header {
+  display:flex;
+  justify-content:space-between;
+}
+.reservation__container__gallery h5 {
+  font-size: 20px;
+  color: $resturant-header-color;
+}
+.reservation__container__gallery h6 {
+  padding-top:5px;
+}
+.reservation__container__gallery h6 a {
+  font-size: 16px;
+  color: $menu-background-color;
+  text-decoration:none;
+}
+
+.reservation__container__gallery__photos__rest img {
+  width:160px;
+  height:160px;
+  flex-grow:1;
+  margin-bottom:10px;
+}
+
+.reservation__container__gallery__photos__seeAll img{
+  width:160px;
+  height:160px;
+}
+
+.reservation__container__gallery__photos__first img {
+  width:430px;
+  height:500px;
+}
+.reservation__container__gallery__photos{
+  margin-top:30px;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+}
+.reservation__container__gallery__photos__rest {
+  width:300px;
+  flex-grow:1;
+  flex-shrink:1;
+  flex-direction: row;
+  margin-left:5px;
+  min-height:500px;
+}
+
+
+
+

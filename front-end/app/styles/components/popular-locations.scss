@@ -1,0 +1,12 @@
+@import "../defaults/constants";
+
+.popular-locations__title {
+  font-size: 20px;
+  color: $menu-background-color;
+}
+
+.popular-locations__number {
+  opacity: 0.4;
+  font-size: 18px;
+  color: $menu-background-color;
+}

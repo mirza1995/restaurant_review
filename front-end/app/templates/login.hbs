@@ -1,0 +1,43 @@
+<div class="container">
+  <nav class="menu navbar navbar-expand-lg">
+    <a class="navbar-brand ml-3" href="/">Restaurant ABH</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse">
+      <div class="menu__items navbar-nav ml-auto">
+        <a class="nav-item nav-link active mr-5" href="/">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-item nav-link mr-5" href="/restaurants">Restaurants</a>
+        <a class="login__menu__items--active nav-item nav-link mr-5 ml-3" href="/login">Login</a>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<div class="form__container">
+  <div class="form__container__login col-sm-12 col-md-8 col-lg-4 pt-5 pb-5">
+    <div class="form__container__login__header mb-3">
+      <h3>Login</h3>
+      <a href="/signup">Create Account</a>
+    </div>
+    <div class="form-group">
+      {{input type="email" class="form-control"  value=email placeholder="Email" aria-describedby="emailHelp"}}
+      {{#if showEmailError}}
+        {{ error-message message="Email is missing"}}
+      {{/if}}
+      {{#if showInvalidEmailError}}
+        {{ error-message message="Email is invalid"}}
+      {{/if}}
+    </div>
+    <div class="form-group">
+      {{input type="password" class="form-control"  value=password placeholder="Password" aria-describedby="password"}}
+      {{#if showPasswordError}}
+        {{ error-message message="Password is missing"}}
+      {{/if}}
+    </div>
+    {{#if showLoginError}}
+      {{ error-message message="Wrong email or password."}}
+    {{/if}}
+    <button {{action "submitLogin"}} class="form__container__login__button btn col-12 mt-3">Login</button>
+  </div>
+</div>

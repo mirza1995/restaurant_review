@@ -1,0 +1,52 @@
+<div class="admin__header form-inline">
+  <div class="admin__menu col d-flex mr-lg-5 mr-md-5 justify-content-between">
+    <div class="admin__menu__links">
+      <a href="dashboard">Dashboard</a>
+      <a href="restaurants">Restaurants</a>
+      <a class="admin__menu__links--active" href="locations">Locations</a>
+      <a href="cousines">Categories</a>
+      <a href="users">Users</a>
+    </div>
+    <div class="admin__menu__search form-inline">
+      {{fa-icon "search"}}
+      {{input value=searchValue 
+        type="text" 
+        class="admin__menu__search__input form-control"  
+        placeholder="Search..."
+        key-up="searchLocation"}}
+    </div>
+  </div>
+
+  <button {{action "changeLocation" 0}} class="admin__header__button col-auto btn">Add Location</button>
+</div>
+
+<div class="admin__list">
+  <div class="admin__list__header form-inline col-12">
+    <div class="admin__list__header__column col-11">
+      Name
+    </div>
+    <div class="admin__list__header__column col-1">
+    </div>
+  </div>
+  {{#each locations as |location|}}
+    <div class="admin__list__row form-inline col-12">
+      <div class="admin__list__column col-11">
+        {{location.locationName}}
+      </div>
+      <div class="admin__list__column--icons col-1">
+        <a {{action "changeLocation" location.id}} href="#">{{fa-icon "pencil"}}</a>
+        <a {{action "deleteLocation" location.id}} href="#">{{fa-icon "trash"}}</a>
+      </div>
+    </div>
+  {{/each}}
+</div>
+
+<nav class="restaurants__container__list__pagination pb-5">
+  <div class="pagination">
+    <div class="restaurants__container__list__pagination__prev page-item"><button {{action 'previousPage' }} class="page-link">Previous</button></div>
+      {{#each (range 1 (add numberOfPages 1)) as |pageNumber|}}
+        <div class="restaurants__container__list__pagination__page {{if (eq page pageNumber) 'restaurants__container__list__pagination__page--active'}} page-item"><button {{action 'setPage' pageNumber }} class="page-link">{{pageNumber}}</button></div>
+      {{/each}}
+    <div class="restaurants__container__list__pagination__next page-item"><button {{action 'nextPage' }} class="page-link">Next</button></div>
+  </div>
+</nav>

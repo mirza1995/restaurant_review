@@ -1,0 +1,51 @@
+.admin__header .admin__header__button {
+  background: $findTable-button-color;
+  border-radius: 2px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 16px;
+  color:white;
+  width:140px;
+  height:46px;
+  font-weight:bold;
+}
+
+.admin__list {
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.10);
+  margin:50px 0 0 0;
+  background:white;
+}
+.admin__list__header, .admin__list__row {
+  padding:0;
+}
+.admin__list__header__column {
+  padding: 10px 0 10px 15px;
+  color: $light-grey-color-opacity40;
+  font-weight:bold;
+  border:1px solid $light-grey-color-opacity40;
+  height:50px;
+}
+.admin__list__column {
+  @extend .admin__list__header__column;
+  color:$menu-background-color;
+  border-top:none;
+}
+.admin__list__column--icons {
+  @extend .admin__list__column;
+  text-align:center;
+}
+.admin__list__column--icons a {
+  color: $light-grey-color-opacity40;
+  text-decoration:none;
+  font-size:18px;
+  margin-right:10px;
+}
+.admin__list__column--icons a:hover {
+  color:$menu-background-color;
+}
+
+.create-cousine__photo {
+  width: 140px;
+  height:140px;
+  position:relative;
+  margin-bottom:20px;
+}

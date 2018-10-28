@@ -1,0 +1,46 @@
+@import "../defaults/white-menu";
+@import "../defaults/popup";
+@import "../components/restaurants-search-bar";
+.restaurants__container{
+  background-color: $grey-background-color;
+  min-height:600px;
+  overflow:hidden;
+}
+.restaurants__container__list .row .popular__card{
+	background-color:$grey-background-color;
+}
+.restaurants__container__list {
+	min-height:500px;
+	margin-bottom:50px;
+}
+.restaurants__container__list__pagination .pagination{
+	justify-content:center;
+	margin-top:50px;
+}
+.restaurants__container__list__pagination__page button{
+	font-size: 14px;
+	color: rgba(-2147483648,27,-2147483648,0.60);
+	margin-left:17px;
+	border: 1px solid #EAEAEE;
+	border-radius: 3px;
+}
+
+.restaurants__container__list__pagination__page--active button{
+	background: $findTable-button-color;
+	color:white;
+}
+
+.restaurants__container__list__pagination__next button,.restaurants__container__list__pagination__prev button{
+	font-size: 14px;
+	letter-spacing: 0;
+	background:none;
+	border:none;
+	text-transform: uppercase;
+	color:$grey-letter-color;
+}
+.restaurants__container__list__pagination__next button {
+	margin-left:36px;
+}
+.restaurants__container__list__pagination__prev button {
+	margin-right:19px;
+}

@@ -1,0 +1,43 @@
+<div class="search-bar__dropdown btn-group">
+  <button class=" btn" type="button">{{selectedPeople}} People</button>
+  <button {{action 'showPeopleDropdown'}} type="button" class="btn dropdown-toggle dropdown-toggle-split" aria-haspopup="true" aria-expanded="false">
+    <span class="sr-only">People Dropdown</span>
+  </button>
+  {{#if peopleDropdown}}
+    <div class="search-bar__dropdown__people">
+      {{#each (range 2 11) as |numberOfPeople|}}
+        {{people-dropdown-item peopleAmount=numberOfPeople on-select='onPeopleSelect'}}
+      {{/each}}
+    </div>
+  {{/if}}
+</div>
+
+<div class="search-bar__dropdown search-bar__dropdown__date btn-group">
+  <button type="button" class="btn">{{datePicked}}</button>
+  <button {{action "toggleDatePicker"}} type="button" class="btn dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+    <span class="sr-only">Date Picker</span>
+    <div class="search-bar__datePicker">
+      {{#if showDatePicker}}
+        {{pikaday-inputless onSelection=(action 'changePickedDate')}}
+      {{/if}}
+    </div>
+  </button>
+</div>
+
+<div class="search-bar__dropdown  btn-group">
+  <button class=" btn" type="button">{{selectedHours}}</button>
+  <button {{action 'showHoursDropdown'}} type="button" class="btn dropdown-toggle dropdown-toggle-split" aria-haspopup="true" aria-expanded="false">
+    <span class="sr-only">Hours Dropdown</span>
+  </button>
+  {{#if hoursDropdown}}
+    <div class="search-bar__dropdown__hours">
+      {{#each (range time 24) as |hour|}}
+        {{hours-dropdown-item hoursAmount=hour half=1 on-select='onHoursSelect'}}
+        {{hours-dropdown-item hoursAmount=hour half=2 on-select='onHoursSelect'}}
+      {{/each}}
+    </div>
+  {{/if}}
+</div>
+<button {{action 'findTableSearchBar'}} class="search-bar__button btn" type="submit">Find a table</button>
+
+

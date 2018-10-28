@@ -1,0 +1,17 @@
+<div class="{{if hovered 'multiple-upload__box--hovered'}}">
+  <div class="multiple-upload__box__icon text-center">
+    <img src="/assets/images/upload.png" class="multiple-upload__icon">
+  </div>
+  <p class="multiple-upload__text">Drag and drop photos</p>
+  <p class="multiple-upload__text--second">here</p>
+  <p class="multiple-upload__text--third">or</p>
+  <div class="multiple-upload__container text-center">
+    <button {{action 'uploadPhotos'}} class="multiple-upload__button">Upload Photos</button>
+  </div>
+  <input
+    multiple="true"
+    onchange={{action "upload"}}
+    accept="image/png,image/jpeg,,image/jpg"
+    type="file"
+    class="multiple-upload__input">
+</div>

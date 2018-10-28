@@ -1,0 +1,118 @@
+<div class="container">
+  <nav class="menu navbar navbar-expand-lg">
+    <a class="navbar-brand ml-3" href="/">Restaurant ABH</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse">
+      <div class="menu__items navbar-nav ml-auto">
+        <a class="nav-item nav-link active mr-5" href="/">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-item nav-link mr-5" href="/restaurants">Restaurants</a>
+        {{login-buttons loggedIn=loggedIn user=user logOut="logout"}}
+      </div>
+    </div>
+  </nav>
+</div>
+<div class="complete-reservation__main__body">
+  <div class="complete-reservation__results container pb-5 pt-5">
+    <h3 class="mt-5 text-center">Complete Reservation:</h3>
+    <div class="complete-reservation__results__restaurants">
+        <div class="complete-reservation__results__restaurants__header d-flex justify-content-between">
+          <h4 class="col-md-12 col-lg-6">Reservation details</h4>
+          <div class="complete-reservation__results__restaurants__counter alert alert-danger"><span class="mr-2 pt-1">{{fa-icon "clock-o"}}</span> You have {{currentTime}} minutes to complete reservation</div>
+        </div>
+        {{find-table-restaurant
+          restaurantName=reservationInformation.restaurantName
+          imageFileName=reservationInformation.imageFileName 
+          date=reservationInformation.date 
+          hours=reservationInformation.time 
+          persons=reservationInformation.persons}}
+    </div>
+  </div>
+</div>
+<div class="complete-reservation__signup">
+  {{#unless loggedIn}}
+    <div class="container">
+      <h5>Already a member? <a href="/login">Sign in</a></h5>
+      {{#if showBackEndValidationError}}
+        {{ error-message message="There was an error in the information you entered"}}
+      {{/if}}
+      <div class="row">
+        <div class="form-group col-sm-12 col-md-6 col-lg-6">
+            {{input type="text" class="form-control" value=firstName placeholder="First Name" aria-describedby="firstName"}}
+            {{#if showFirstNameError}}
+              {{ error-message message="First name is missing"}}
+            {{/if}}
+        </div>
+        <div class="form-group col-sm-12 col-md-6 col-lg-6">
+            {{input type="text" class="form-control" value=lastName placeholder="Last Name" aria-describedby="lastName"}}
+            {{#if showLastNameError}}
+              {{ error-message message="Last name is missing"}}
+            {{/if}}
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-sm-12 col-md-6 col-lg-6">
+            {{input type="email" class="form-control" value=email placeholder="Email" aria-describedby="emailHelp"}}
+            {{#if showEmailError}}
+              {{ error-message message="Email is missing"}}
+            {{/if}}
+            {{#if showInvalidEmailError}}
+              {{ error-message message="Email is invalid"}}
+            {{/if}}
+            {{#if showEmailInUseError}}
+              {{ error-message message="Email is taken"}}
+            {{/if}}
+        </div>
+        <div class="form-group col-sm-12 col-md-6 col-lg-6">
+            {{input type="text" class="form-control"  value=phoneNumber placeholder="Phone Number" aria-describedby="phoneNumber"}}
+            {{#if showPhoneNumberError}}
+              {{ error-message message="Phone number is missing"}}
+            {{/if}}
+            {{#if showInvalidPhoneNumberError}}
+              {{ error-message message="Phone number is invalid"}}
+            {{/if}}
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-sm-12 col-md-6 col-lg-6">
+          <select onchange={{action 'onCountrySelect' value="target.value"}} class="form-control">
+            {{#each countries as |country|}}
+              <option value="{{country}}">{{country}}</option>
+            {{/each}}
+          </select>
+        </div>
+        <div class="form-group col-sm-12 col-md-6 col-lg-6">
+          <select onchange={{action 'onCitySelect' value="target.value"}} class="form-control">
+            {{#each cities as |city|}}
+              <option value="{{city}}">{{city}}</option>
+            {{/each}}
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-sm-12 col-md-6 col-lg-6">
+          {{input type="password" class="form-control"  value=password placeholder="Password" aria-describedby="password"}}
+          {{#if showPasswordError}}
+            {{ error-message message="Password is missing"}}
+          {{/if}}
+          {{#if showPasswordTooShort}}
+            {{ error-message message="Password is too short"}}
+          {{/if}}
+        </div>
+        <div class="form-group col-sm-12 col-md-6 col-lg-6">
+          {{input type="password" class="form-control"  value=confirmPassword placeholder="Confirm Password" aria-describedby="confirmPassword"}}
+          {{#if showPasswordDontMatchError}}
+            {{ error-message message="Passwords dont match"}}
+          {{/if}}
+        </div>
+      </div>
+    </div>
+  {{/unless}}
+
+  <div class="container text-center pt-5">
+    <button {{action 'completeReservation'}} class="complete-reservation__button btn">Complete Reservation</button>
+    <p class="complete-reservation__terms">By clicking “Complete Reservation” you agree to the <a href="/termsOfUse">Restaurant ABH Terms of use</a> and <a href="/privacyPolicy">Privacy Policy</a>.</p>
+  </div>
+</div>
+

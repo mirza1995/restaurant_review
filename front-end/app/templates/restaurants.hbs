@@ -1,0 +1,57 @@
+<div class="container">
+  <nav class="menu navbar navbar-expand-lg">
+    <a class="navbar-brand ml-3" href="/">Restaurant ABH</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse">
+      <div class="menu__items navbar-nav ml-auto">
+        <a class="nav-item nav-link active mr-5" href="/">Home <span class="sr-only">(current)</span></a>
+        <a class="restaurants__menu__items--active nav-item nav-link mr-5" href="/restaurants">Restaurants</a>
+        {{login-buttons loggedIn=loggedIn user=user logOut="logout"}}
+      </div>
+    </div>
+  </nav>
+</div>
+<div class="restaurants__container">
+  <div class="container">
+    {{restaurants-search-bar 
+      cousines=cousines
+      activeCousine=activeCousine
+      changeCousineToSearch='changeCousineToSearch'
+      updateSearchInformation='updateSearchInformation'}}
+    <div class="restaurants__container__list">
+      {{#if restaurantsLoaded}}
+        {{#if searchUpdate}}
+          <div class="row">
+            {{#if (gt restaurantsFound 0)}}
+              <div class="alert alert-success col-12 text-center" role="alert">
+                Search results: {{restaurantsFound}} found
+              </div>
+            {{else}}
+              <div class="alert alert-success col-12 text-center" role="alert">
+                Search results: Nothing found
+              </div>
+            {{/if}}
+          </div>
+        {{/if}}
+        <div class="row">
+          {{#each restaurants as |restaurant|}}
+            {{restaurant-card-reservation restaurant=restaurant}}
+          {{/each}}
+        </div>
+        <nav class="restaurants__container__list__pagination">
+          <div class="pagination">
+            <div class="restaurants__container__list__pagination__prev page-item"><button {{action 'previousPage' }} class="page-link">Previous</button></div>
+              {{#each (range 1 (add numberOfPages 1)) as |pageNumber|}}
+                <div class="restaurants__container__list__pagination__page {{if (eq page pageNumber) 'restaurants__container__list__pagination__page--active'}} page-item"><button {{action 'setPage' pageNumber }} class="page-link">{{pageNumber}}</button></div>
+              {{/each}}
+            <div class="restaurants__container__list__pagination__next page-item"><button {{action 'nextPage' }} class="page-link">Next</button></div>
+          </div>
+        </nav>
+      {{/if}}
+    </div>
+  </div>
+
+  {{popular-locations popularLocations=popularLocations}}
+</div>

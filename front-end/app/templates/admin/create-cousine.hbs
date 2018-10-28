@@ -1,0 +1,42 @@
+<div class="admin__header form-inline">
+  <div class="admin__menu col d-flex mr-lg-5 mr-md-5 justify-content-between">
+    <div class="admin__menu__links">
+      <a href="/admin/dashboard">Dashboard</a>
+      <a href="/admin/restaurants">Restaurants</a>
+      <a href="/admin/locations">Locations</a>
+      <a class="admin__menu__links--active" href="/admin/cousines">Categories</a>
+      <a href="/admin/users">Users</a>
+    </div>
+  </div>
+
+  <button {{action "changeCousine" 0}} class="admin__header__button col-auto btn">Add Category</button>
+</div>
+<div class="create__body">
+  <div class="create__container">
+    <div class="col-sm-12 col-lg-6 pl-0 pr-4">
+      {{#if showBackEndValidationError}}
+        {{ error-message message="There was an error in the information you entered"}}
+      {{/if}}
+      {{#if showCousineError}}
+        {{ error-message message="Cousine name is missing"}}
+      {{/if}}
+    </div>
+    <div class="create-cousine__photo pl-3">
+      {{file-upload fileInputChanged='cousinePhotoUpload' 
+        text='Upload Cousine Photo'
+        previewPhoto=cousinePhoto}}
+    </div>
+    
+
+    <div class="form-inline pl-0 col-12">
+      <div class="col-sm-12 col-lg-6 pl-3 form-group">
+          <label class="mb-1">Cousine Name</label>
+          {{input type="text" class="col-12 form-control" value=cousineName placeholder="Cousine Name" aria-describedby="cousineName"}}
+      </div>
+      <div class="col-sm-12 col-lg-6 pr-0 text-right pt-4">
+        <button {{action "cancel"}} class="cancel__button btn">Cancel</button>
+        <button {{action "addCousine"}} class="create__button btn">{{#if updateCousine}}Update{{else}}Add{{/if}} Category</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,76 @@
+.food-menu__type{
+  text-transform: uppercase;
+}
+.food-menu__meals{
+  margin-bottom:30px;
+}
+
+.food-menu__list {
+  padding: 24px 0 24px 30px;
+}
+.food-menu__list h5 {
+  font-size: 16px;
+  color: #171717;
+  letter-spacing: 0;
+  margin-bottom: 10px;
+}
+.food-menu__list h6 {
+  font-size: 18px;
+  color: #1A1A1A;
+  letter-spacing: 0;
+  margin-bottom:10px;
+}
+.food-menu__list__row {
+  display:flex;
+}
+.food-menu__list__row__dish {
+  flex-grow:0;
+}
+.food-menu__list__row__price {
+  flex-grow:0;
+  padding-right: 30px;
+}
+.food-menu__list__row__dots {
+  flex-grow:1;
+  border-bottom: 2px dotted #979797;
+  height:19px;
+}
+.food-menu__list__additions {
+  font-size: 13px;
+  color: rgba(-2147483648,-2147483648,-2147483648,0.40);
+  letter-spacing: 0;
+  line-height: 21px;
+  margin-bottom:10px;
+}
+.food-menu__header {
+  display:flex;
+}
+.food-menu__header__empty {
+  flex-grow:1;
+}
+.food-menu__header p {
+  opacity: 0.4;
+  font-size: 13px;
+  color: #1A1A1A;
+  letter-spacing: 0;
+  padding: 0 7px 0 7px;
+}
+.food-menu__header__size {
+  padding-right: 30px;
+}
+.food-menu__list__row__prices {
+  display:flex;
+  min-width:150px;
+}
+.food-menu__header__size {
+  display:flex;
+  justify-content: space-between;
+  min-width:150px;
+}
+.food-menu__list__row__prices__large {
+  padding-right:30px;
+  padding-left:5px;
+}
+.food-menu__list__row__prices__small {
+  padding-right:5px;
+}

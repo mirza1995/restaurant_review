@@ -1,0 +1,22 @@
+<div class="container">
+  <nav class="menu navbar navbar-expand-lg">
+    <a class="navbar-brand ml-3" href="/"><b>Restaurant ABH</b></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse">
+      <div class="menu__items navbar-nav ml-auto">
+        <a class="nav-item nav-link active mr-5" href="/"><b>Home</b></a>
+        <a class="nav-item nav-link mr-5" href="/restaurants"><b>Restaurants</b></a>
+        <a {{action 'logout'}} class="nav-item nav-link mr-5" href="#"><b><span class="login-buttons__icon">{{fa-icon "user"}}</span> {{user.userName}} (Logout)</b></a>
+        <a class="restaurants__menu__items--active nav-item nav-link mr-5" href="/admin/dashboard"><b>Administration</b></a>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<div class="admin__container">
+  <div class="container">
+    {{outlet}}
+  </div>
+</div>

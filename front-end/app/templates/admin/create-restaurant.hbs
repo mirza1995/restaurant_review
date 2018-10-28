@@ -1,0 +1,34 @@
+<div class="admin__header form-inline">
+  <div class="admin__menu col d-flex mr-lg-5 mr-md-5 justify-content-between">
+    <div class="admin__menu__links">
+      <a href="/admin/dashboard">Dashboard</a>
+      <a class="admin__menu__links--active" href="/admin/restaurants">Restaurants</a>
+      <a href="/admin/locations">Locations</a>
+      <a href="/admin/cousines">Categories</a>
+      <a href="/admin/users">Users</a>
+    </div>
+  </div>
+  <button {{action "changeRestaurant" 0}} class="admin__header__button col-auto btn">Add Restaurant</button>
+</div>
+<div class="create-restaurant__menu col-md-7 col-lg-5 d-flex justify-content-between">
+  <div class="admin__menu__links">
+    <a {{action 'changeRestaurantPage' 1}} class="{{if (eq restaurantPage 1) 'admin__menu__links--active'}}" href="#">Basic Details</a>
+    <a {{action 'changeRestaurantPage' 2}} class="{{if (eq restaurantPage 2) 'admin__menu__links--active'}}" href="#">Menu</a>
+    <a {{action 'changeRestaurantPage' 3}} class="{{if (eq restaurantPage 3) 'admin__menu__links--active'}}" href="#">Gallery</a>
+    <a {{action 'changeRestaurantPage' 4}} class="{{if (eq restaurantPage 4) 'admin__menu__links--active'}}" href="#">Tables</a>
+  </div>
+</div
+>
+<div class="create-restaurant__body">
+  {{#if menuClickedError}}
+    <div class="create-restaurant__body__errors">
+      <div class="alert alert-warning" role="alert">
+        Please create a new restaurant first.
+      </div>
+    </div>
+  {{/if}}
+  {{outlet}}
+</div>
+<div class="empty-space"></div>
+
+

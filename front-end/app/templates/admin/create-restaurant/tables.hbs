@@ -1,0 +1,57 @@
+<div class="col-sm-12 col-lg-12 pl-0 pr-0 d-flex justify-content-between">
+  <h5>Tables</h5>
+  <button {{action 'addTable'}} class="create-restaurant__body__new btn">Add new table</button>
+</div>
+
+{{#if tablesAdded}}
+  <div class="alert alert-success text-center" role="alert">
+    Tables added.
+  </div>
+{{/if}}
+
+<div class="create-restaurant__body__tables__items">
+  {{#each (range 0 numberOfTables) as |index|}}
+    <div class="row pl-0 pr-0 ml-0 mr-0">
+      <div class="create-restaurant__body__tables__number">{{add index 1}}.</div>
+      <div class="create-restaurant__body__tables__select">
+        {{select-change changed='onTableSelect'
+          index=index
+          tablesSize=tablesSize
+          tablesDropdown=true
+          tables=(get-array-value tables index)
+          field="persons"}}
+      </div>
+      <div class="create-restaurant__body__tables__shape">
+        {{select-change changed='onShapeSelect'
+          index=index
+          tablesSize=tablesSize
+          tablesDropdown=false
+          tables=(get-array-value tables index)
+          field="shape"}}
+      </div>
+      <div class="create-restaurant__body__tables__ammount">
+        {{input-change changed="amountChanged" 
+          index=index 
+          placeholder="Ammount" 
+          menu=(get-array-value tables index)
+          field='ammount'}}
+      </div>
+
+      <div class="create-restaurant__body__tables__delete">
+        <a {{action "deleteTable" index}} href="#">{{fa-icon "trash"}}</a>
+      </div>
+    </div>
+  {{/each}}
+</div>
+<div class="create-restaurant__body__errors">
+  {{#if tablesError}}
+    <div class="alert alert-danger" role="alert">
+      Errors on the page: <br>
+      <div class="ml-3">{{tableErrorMessage}}<br></div>
+    </div>
+  {{/if}}
+</div>
+<div class="create-restaurant__body__buttons col-12 text-right pt-4">
+  <button {{action "cancel"}} class="cancel__button btn">Cancel</button>
+  <button {{action "saveTables"}} class="create__button btn">{{#if updateRestaurant}}Update{{else}}Add{{/if}} Restaurant</button>
+</div>

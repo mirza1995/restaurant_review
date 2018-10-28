@@ -1,0 +1,19 @@
+.transparent-menu {
+  position:absolute;
+  margin-top:-300px;
+  width:93%;
+}
+.transparent-menu__empty{
+  height: 250px;
+  width:100%;
+  border-radius: 2px;
+}
+.transparent-menu__button {
+  font-size: 16px;
+  color: $findTable-button-color;
+  background-color:white;
+  border:none;
+}
+.transparent-menu__empty--transparent{
+  background-image: linear-gradient(-1deg, #FFFFFF 22%, rgba(255,255,255,0.00) 100%);
+}

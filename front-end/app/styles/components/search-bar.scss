@@ -1,0 +1,33 @@
+@import "../defaults/constants";
+.search-bar__button {
+  background: $findTable-button-color;
+  border-radius: 0 3px 3px 0;
+  height: 56px;
+  font-size: 18px;
+  color: white;
+  margin:0;
+}
+.search-bar__dropdown button {
+  background:white;
+  border-radius: 0;
+  border:none;
+  font-weight:bold;
+}
+.search-bar__buttons {
+  display: flex;
+  flex-wrap: wrap;
+}
+.search-bar__datePicker {
+  position:absolute;
+  margin-top:38px;
+}
+.search-bar__dropdown__people,.search-bar__dropdown__hours{
+  background:white;
+  position:absolute;
+  z-index:1000;
+  margin-top:52px;
+  margin-left:85px;
+  border-radius:4px;
+  overflow-y: scroll;
+  height: 200px;
+}

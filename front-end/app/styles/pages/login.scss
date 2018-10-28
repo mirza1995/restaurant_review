@@ -1,0 +1,47 @@
+@import "../defaults/constants";
+
+.menu a{
+  @extends .menu;
+  color: $menu-background-color;
+  font-weight:bold;
+}
+
+.menu .login__menu__items--active{
+  color: $findTable-button-color;
+}
+
+.menu__items__logout{
+  background:none;
+  border:none;
+  color:white;
+
+}
+
+.form__container{
+  background-color: $grey-background-color;
+  min-height:600px;
+}
+
+.form__container__login{
+  margin:0 auto;
+}
+.form__container__login__header {
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+}
+.form__container__login__header h3 {
+  color: $menu-background-color;
+  font-size:24px;
+}
+.form__container__login__header a{
+  padding-top:5px;
+  font-size: 18px;
+  color: $findTable-button-color;
+  text-decoration: none;
+}
+
+.form__container__login__button {
+  background-color:$findTable-button-color;
+  color:white;
+}

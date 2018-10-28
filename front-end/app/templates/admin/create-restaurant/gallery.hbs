@@ -1,0 +1,49 @@
+{{#if galleryUploaded}}
+  <div class="alert alert-success text-center" role="alert">
+    Gallery uploaded.
+  </div>
+{{/if}}
+<div class="create-restaurant__body__errors">
+  {{#if galleryError}}
+    <div class="alert alert-danger" role="alert">
+      Errors on the <b>Gallery</b> page: <br>
+      <div class="ml-3">Gallery is empty<br></div>
+    </div>
+  {{/if}}
+</div>
+<div class="create-restaurant__add__photos col-sm-12 col-lg-12 pl-0 pr-0">
+  {{#if addPhotosPage}}
+    {{#if galleryUploaded}}
+      <div class="create-restaurant__add__photos__message alert alert-success mt-4" role="alert">
+        Gallery Uploaded
+      </div>
+    {{/if}}
+    <div class="d-flex justify-content-between mb-3">
+      <h5>Add Photos</h5>
+    </div>
+    <div class="create-restaurant__add__photos__upload">
+      {{multiple-upload fileInputChanged='photosUploaded'}}
+    </div>
+  {{else}}
+    <div class="d-flex justify-content-between">
+      <h5>Photos</h5>
+      <button {{action 'addPhotos'}} class="create-restaurant__body__new btn">Add photos</button>
+    </div>
+    <div class="create-restaurant__add__photos__gallery">
+      {{#photo-swipe items=photos history=false as |photoswipe|}}
+        <div class="create-restaurant__show__photos">
+          {{#each photos as |photo index|}}
+            <div class="create-restaurant__show__photo">
+              <img src={{photo.src}} {{action photoswipe.actions.open (hash index=index)}} />
+            </div>
+          {{/each}}
+          <a {{action 'addPhotos'}} href="#" class="create-restaurant__body__plus">+</a>
+        </div>
+      {{/photo-swipe}}
+    </div>
+  {{/if}}
+</div>
+<div class="create-restaurant__body__buttons col-12 text-right pt-4">
+  <button {{action "cancel"}} class="cancel__button btn">Cancel</button>
+  <button {{action "saveGallery"}} class="create__button btn">{{#if updateRestaurant}}Update{{else}}Add{{/if}} Gallery</button>
+</div>

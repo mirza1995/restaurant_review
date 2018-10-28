@@ -1,0 +1,16 @@
+@import "../components/find-table-restaurant";
+.find__table__main__body{
+  background-color:$grey-background-color;
+}
+.find__table__results {
+  min-height:500px;
+}
+.find__table__results__restaurants__card {
+  background-color:white;
+
+}
+.find__table__results__restaurants__card__times {
+  padding-left:50px;
+  padding-bottom:20px;
+  margin-top:-70px;
+}

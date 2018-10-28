@@ -1,0 +1,14 @@
+{{#if (gt hoursAmount 12)}}
+  {{#if (eq half 1)}}
+  	{{sub hoursAmount 12}}:00 PM
+  {{else}}
+  	{{sub hoursAmount 12}}:30 PM
+  {{/if}}
+{{/if}}
+{{#if (lte hoursAmount 12)}}
+  {{#if (eq half 1)}}
+  	{{sub hoursAmount}}:00 AM
+  {{else}}
+  	{{sub hoursAmount}}:30 AM
+  {{/if}}
+{{/if}}

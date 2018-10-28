@@ -1,0 +1,81 @@
+{{#if menuCreated}}
+  <div class="alert alert-success text-center" role="alert">
+    Menu created.
+  </div>
+{{/if}}
+
+<div class="d-flex justify-content-between">
+  <div class="create-restaurant__body__menu__header form-inline">
+    <button {{action 'changeMenu' 1}} class="{{if (eq menuType 1)
+      'create-restaurant__body__menu__header--active'}} btn">Breakfast</button>
+    <button {{action 'changeMenu' 2}} class="{{if (eq menuType 2)
+      'create-restaurant__body__menu__header--active'}} btn">Lunch</button>
+    <button {{action 'changeMenu' 3}} class="{{if (eq menuType 3)
+      'create-restaurant__body__menu__header--active'}} btn">Dinner</button>
+  </div>
+
+  <button {{action 'addItem'}} class="create-restaurant__body__new btn">Add new item</button>
+</div>
+
+<div class="create-restaurant__body__menu__items">
+  {{#each (range 0 numberOfMenuItems) as |index|}}
+    <div class="row pl-0 pr-0 ml-0 mr-0">
+      <div class="create-restaurant__body__menu__items__number">{{add index 1}}.</div>
+      <div class="create-restaurant__body__menu__items__name col-md-6 col-lg-5">
+        {{input-change changed="menuNameChanged" 
+          index=index 
+          placeholder="Name" 
+          menu=(get-array-value menu index)
+          field='name'}}
+      </div>
+      <div class="create-restaurant__body__menu__items__price">
+        {{input-change changed="menuLargePriceChanged" 
+          index=index
+          placeholder="$ Large Price"
+          menu=(get-array-value menu index)
+          field='largePrice'}}
+      </div>
+      <div class="create-restaurant__body__menu__items__price">
+        {{input-change changed="menuSmallPriceChanged"
+          index=index 
+          placeholder="$ Small Price"
+          menu=(get-array-value menu index)
+          field='smallPrice'}}
+      </div>
+
+      <div class="create-restaurant__body__menu__items__delete">
+        <a {{action "deleteMenuItem" index}} href="#">{{fa-icon "trash"}}</a>
+      </div>
+    </div>
+    <div class="row p-0 m-0">
+      <div class="create-restaurant__body__menu__items__description col-md-6 col-lg-5">
+        {{input-change changed="menuDescriptionChanged" 
+          index=index 
+          placeholder="Description"
+          menu=(get-array-value menu index)
+          field='description'}}
+      </div>
+      <div class="create-restaurant__body__menu__items__type">
+        {{input-change changed="menuTypeChanged" 
+          index=index 
+          placeholder="Meal Type"
+          menu=(get-array-value menu index)
+          field='type'}}
+      </div>
+    </div>
+  {{/each}}
+</div>
+<div class="create-restaurant__body__errors">
+  {{#if menuError}}
+    <div class="alert alert-danger" role="alert">
+      Errors on the page: <br>
+      {{#each menuErrorMessage as |message|}}
+        <div class="ml-3">{{message}}<br></div>
+      {{/each}}
+    </div>
+  {{/if}}
+</div>
+<div class="create-restaurant__body__buttons col-12 text-right pt-4">
+  <button {{action "cancel"}} class="cancel__button btn">Cancel</button>
+  <button {{action "addRestaurant"}} class="create__button btn">{{#if updateRestaurant}}Update{{else}}Add{{/if}} Menu</button>
+</div>

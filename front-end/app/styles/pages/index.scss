@@ -1,0 +1,75 @@
+/*Landing Jumbotron*/
+@import "../defaults/constants";
+@import "../components/search-bar";
+@import "../components/landing-search-bar";
+@import "../components/restaurant-card-reservation";
+@import "../components/special-meal-card";
+@import "../components/popular-locations";
+
+.landing {
+  min-height: 680px;
+  background:url('../assets/images/landing-page-background.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: white;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.landing nav a {
+  color: white;
+  font-size: 20px;
+}
+.menu__items .nav-item{
+  font-size: 16px;
+  font-weight:bold;
+}
+
+.landing__header {
+  text-align: center;
+  margin-top: 15%;
+}
+
+.landing__search {
+  min-height: 56px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/*Popular Today*/
+.popular {
+  margin-bottom: 50px;
+}
+
+/*Specials*/
+
+.specials {
+  background:url("../assets/images/landing-specials-background.png") 40% 30%;
+  background-size: cover;
+  color: white;
+}
+
+.specials__row {
+  margin-left:48px;
+}
+
+.login-buttons__icon {
+  margin-right:15px;
+}
+
+.map .ember-google-map {
+  margin-left:5px;
+  width:100%;
+  height:500px;
+}
+
+.map .map__marker img{
+  width:150px;
+}
+.map__cousines h6{
+  font-size:14px;
+  margin-left: 5px;
+  font-weight:none;
+  color:$grey-letter-color;
+  line-height:8px;
+}

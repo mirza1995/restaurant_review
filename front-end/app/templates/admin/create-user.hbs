@@ -1,0 +1,124 @@
+<div class="admin__header form-inline">
+  <div class="admin__menu col d-flex mr-lg-5 mr-md-5 justify-content-between">
+    <div class="admin__menu__links">
+      <a href="/admin/dashboard">Dashboard</a>
+      <a href="/admin/restaurants">Restaurants</a>
+      <a href="/admin/locations">Locations</a>
+      <a href="/admin/cousines">Categories</a>
+      <a class="admin__menu__links--active" href="/admin/users">Users</a>
+    </div>
+  </div>
+
+  <button {{action "changeUser" 0}} class="admin__header__button col-auto btn">Add Users</button>
+</div>
+<div class="create__body">
+  <div class="create__container">
+    {{#if showBackEndValidationError}}
+      {{ error-message message="There was an error in the information you entered"}}
+    {{/if}}
+    <div class="form-inline pl-0 col-12">
+      <div class="col-sm-12 col-lg-6 pl-0 form-group">
+          <label class="mb-1">First Name</label>
+          {{input type="text" class="col-12 form-control" value=firstName placeholder="First Name" aria-describedby="firstName"}}
+      </div>
+      <div class="col-sm-12 col-lg-6 pr-0 pt-4">
+        {{#if showFirstNameError}}
+            {{ error-message message="First name is missing"}}
+          {{/if}}
+      </div>
+    </div>
+    <div class="form-inline pl-0 col-12 mt-4">
+      <div class="col-sm-12 col-lg-6 pl-0 form-group">
+        <label class="mb-1">Last Name</label>
+        {{input type="text" class="col-12 form-control" value=lastName placeholder="Last Name" aria-describedby="lastName"}}
+      </div>
+      <div class="col-sm-12 col-lg-6 pr-0 pt-4">
+        {{#if showLastNameError}}
+          {{ error-message message="Last name is missing"}}
+        {{/if}}
+      </div>
+    </div>
+    <div class="form-inline pl-0 col-12 mt-4">
+      <div class="col-sm-12 col-lg-6 pl-0 form-group">
+          <label class="mb-1">Email</label>
+          {{input type="email" class="col-12 form-control" value=email placeholder="Email" aria-describedby="emailHelp"}}
+      </div>
+      <div class="col-sm-12 col-lg-6 pr-0 pt-4">
+        {{#if showEmailError}}
+          {{ error-message message="Email is missing"}}
+        {{/if}}
+        {{#if showInvalidEmailError}}
+          {{ error-message message="Email is invalid"}}
+        {{/if}}
+        {{#if showEmailInUseError}}
+          {{ error-message message="Email is taken"}}
+        {{/if}}
+      </div>
+    </div>
+    <div class="form-inline pl-0 col-12 mt-4">
+      <div class="col-sm-12 col-lg-6 pl-0 form-group">
+          <label class="mb-1">Phone Number</label>
+          {{input type="text" class="col-12 form-control"  value=phoneNumber placeholder="Phone Number" aria-describedby="phoneNumber"}}
+      </div>
+      <div class="col-sm-12 col-lg-6 pr-0 pt-4">
+        {{#if showPhoneNumberError}}
+          {{ error-message message="Phone number is missing"}}
+        {{/if}}
+        {{#if showInvalidPhoneNumberError}}
+          {{ error-message message="Phone number is invalid"}}
+        {{/if}}
+      </div>
+    </div>
+    <div class="form-inline pl-0 col-sm-12 col-lg-6 mt-4">
+      <div class="col-sm-12 col-lg-6 pl-0 form-group">
+        <label class="mb-1">Country</label>
+        <select onchange={{action 'onCountrySelect' value="target.value"}} class="col-12 form-control">
+          {{#each countries as |country|}}
+            <option value="{{country}}" selected="{{if (eq countrySelected country) 'true'}}">{{country}}</option>
+          {{/each}}
+        </select>
+      </div>
+      <div class="col-sm-12 col-lg-6 pl-0 form-group">
+        <label class="mb-1">City</label>
+        <select onchange={{action 'onCitySelect' value="target.value"}} class="col-12 form-control">
+          {{#each cities as |city|}}
+            <option value="{{city}}" selected="{{if (eq citySelected city) 'true'}}">{{city}}</option>
+          {{/each}}
+        </select>
+      </div>
+    </div>
+    <div class="form-check mt-4">
+      {{input type="checkbox" class="form-check-input" checked=adminAccount}}
+      <label class="form-check-label">
+        Admin Account
+      </label>
+    </div>
+    <div class="form-inline pl-0 col-12 mt-3">
+      <div class="col-sm-12 col-lg-6 pl-0 form-group">
+        <label class="mb-1">Password</label>
+        {{input type="password" class="col-12 form-control"  value=password placeholder="Password" aria-describedby="password"}}
+      </div>
+      <div class="col-sm-12 col-lg-6 pr-0 pt-4">
+        {{#if showPasswordError}}
+          {{ error-message message="Password is missing"}}
+        {{/if}}
+        {{#if showPasswordTooShort}}
+          {{ error-message message="Password is too short"}}
+        {{/if}}
+        {{#if showPasswordDontMatchError}}
+          {{ error-message message="Passwords dont match"}}
+        {{/if}}
+      </div>
+    </div>
+    <div class="form-inline pl-0 col-12 mt-4">
+      <div class="col-sm-12 col-lg-6 pl-0 form-group">
+        <label class="mb-1">Confirm Passowrd</label>
+        {{input type="password" class="col-12 form-control"  value=confirmPassword placeholder="Confirm Password" aria-describedby="confirmPassword"}}
+      </div>
+      <div class="col-sm-12 col-lg-6 pr-0 text-right pt-4">
+        <button {{action "cancel"}} class="cancel__button btn">Cancel</button>
+        <button {{action "addUser"}} class="create__button btn">{{#if updateUser}}Update{{else}}Add{{/if}} User</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,8 @@
+{{#if loggedIn}}
+  <a {{action 'logout'}} class="nav-item nav-link mr-5" href="#"><span class="login-buttons__icon">{{fa-icon "user"}}</span> {{user.userName}} (Logout)</a>
+  {{#if admin}}
+  	<a class="nav-item nav-link mr-5" href="/admin/dashboard">Administration</a>
+  {{/if}}
+{{else}}
+  <a class="nav-item nav-link mr-5" href="/login">Login</a>
+{{/if}}

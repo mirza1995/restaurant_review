@@ -1,0 +1,242 @@
+.create-restaurant__body {
+  padding-bottom: 60px;
+}
+.empty-space {
+  padding-top:100px;
+}
+.create-restaurant__body__box {
+  background: white;
+  border: 1px solid $create-white-color;
+  border-radius: 3px;
+  margin-bottom:0;
+}
+.create-restaurant__menu {
+  @extend .create-restaurant__body__box;
+  border-bottom:none;
+  margin-top:42px;
+}
+.create-restaurant__body {
+  @extend .create-restaurant__body__box;
+}
+
+.create-restaurant__body h5 {
+  font-weight:bold;
+  font-size: 16px;
+  color: #1E1E1E;
+  letter-spacing: 0;
+  padding: 31px 0 10px 44px;
+}
+.create-restaurant__body__logo {
+  @extend .create-restaurant__body__box;
+  width: 140px;
+  height:140px;
+  margin-left:44px;
+  position:relative;
+}
+
+
+.create-restaurant__body__cover {
+  @extend .create-restaurant__body__box;
+  height:140px;
+  margin-left:44px;
+  margin-right:36px;
+  position:relative;
+}
+
+.create-restaurant__body__input {
+  margin-top:27px;
+  margin-left:44px;
+}
+.create-restaurant__body__input__cousine {
+  @extend .create-restaurant__body__input;
+  margin-right:35px;
+}
+.create-restaurant__body__input__cousine select {
+  height:184px;
+}
+.create-restaurant__body__input__price {
+  @extend .create-restaurant__body__input;
+  width:200px;
+}
+.create-restaurant__body__input label,.create-restaurant__body__input__location label {
+  margin-bottom:10px;
+  font-size: 16px;
+  color: #1E1E1E;
+  letter-spacing: 0;
+  font-weight:bold;
+}
+.create-restaurant__body__input__location{
+  padding-right:36px;
+  margin-top:26px;
+  width:250px;
+}
+.create-restaurant__body__description {
+  padding-right:41px;
+}
+.create-restaurant__body__description__textarea {
+  margin-left:44px;
+  height:180px;
+}
+.create-restaurant__body__buttons {
+  margin-top:77px;
+  padding-right:47px;
+}
+
+.create-restaurant__add__photos__gallery {
+  @extend .create-restaurant__body__box;
+  border:none;
+  height:530px;
+  margin: 0 40px 0 40px;
+}
+.create-restaurant__add__photos__message {
+  margin: 0 40px 0 40px;
+}
+.create-restaurant__add__photos__upload {
+  @extend .create-restaurant__body__box;
+  height:530px;
+  margin: 0 40px 0 40px;
+  background: #FAFAFA;
+  border: 1px solid #E6E8EB;
+  border-radius: 3px;
+  position:relative;
+}
+.create-restaurant__body__menu__header {
+  margin-top:29px;
+  margin-left:54px;
+}
+.create-restaurant__body__menu__header button {
+  font-size: 16px;
+  color: $resturant-header-color;
+  letter-spacing: 0;
+  width:87px;
+  border-radius: 3px;
+  background:white;
+  padding: 4px 10px;
+}
+
+.create-restaurant__body__menu__header .create-restaurant__body__menu__header--active {
+  color:white;
+  background: $findTable-button-color;
+}
+
+.create-restaurant__body__new {
+  margin-top:31px;
+  background: $menu-background-color;
+  color: white;
+  opacity: 0.4;
+  margin-right:46px;
+  padding: 4px 10px;
+}
+
+.create-restaurant__body__menu__items {
+  font-size: 16px;
+  letter-spacing: 0;
+  margin-top:52px;
+}
+.create-restaurant__body__menu__items__number {
+  margin-left:30px;
+  margin-right:21px;
+  padding-top:5px;
+}
+
+.create-restaurant__body__menu__items__name {
+  height:40px;
+}
+.create-restaurant__body__menu__items__price {
+  margin-right:20px;
+  height:40px;
+  width: 120px;
+}
+.create-restaurant__body__menu__items__delete a {
+  font-size:20px;
+  margin-top:-4px;
+  text-decoration:none;
+  color: #1E1E1E;
+}
+.create-restaurant__body__menu__items__description {
+  margin: 16px 0 30px 64px;
+}
+.create-restaurant__body__menu__items__type {
+  margin-top: 16px;
+  width: 258px;
+}
+
+.create-restaurant__body__tables__number {
+  @extend .create-restaurant__body__menu__items__number;
+  margin-top:2px;
+}
+.create-restaurant__body__tables__delete a {
+  font-size:20px;
+  text-decoration:none;
+  color: #1E1E1E; 
+}
+.create-restaurant__body__tables__select {
+  height:50px;
+  margin-bottom: 30px;
+  width:240px;
+  margin-right: 16px;
+}
+.create-restaurant__body__tables__ammount {
+  width: 106px;
+  margin-right: 30px;
+}
+.create-restaurant__body__tables__ammount input {
+  text-align:center;
+  height:39px;
+}
+.create-restaurant__body__tables__shape {
+  height:50px;
+  margin-right:16px;
+}
+.create-restaurant__body__tables__items {
+  font-size: 16px;
+  letter-spacing: 0;
+  margin-top:30px;
+}
+
+.create-restaurant__body__errors {
+  margin: 30px 50px 20px 44px;
+}
+
+.ember-google-map {
+  width: 498px;
+  margin-left:44px;
+  height:180px;
+}
+
+.file-upload__box {
+  position:absolute;
+  width:100%;
+  height:100%;
+}
+
+.create-restaurant__show__photo img{
+  width:120px;
+  height:120px;
+  margin-top: 16px;
+  margin-right:8px;
+  background: #F9F9F9;
+  border: 1px solid #D3D3D3;
+  border-radius: 2px;
+}
+
+.create-restaurant__show__photos {
+  display:flex;
+  flex-wrap:wrap;
+}
+
+.create-restaurant__body__plus {
+  color: $findTable-button-color;
+  font-size:30px;
+  margin-top:16px;
+  padding:31px 49px 31px 49px;
+  border: 1px solid #D3D3D3;
+  border-radius: 2px;
+  text-decoration: none;
+}
+
+.create-restaurant__body__plus:hover {
+  text-decoration:none;
+  color:$findTable-button-color;
+  border: 1px solid $findTable-button-color;
+}
